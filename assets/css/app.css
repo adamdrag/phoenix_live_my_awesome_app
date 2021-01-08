@@ -1,0 +1,15 @@
+@import "../node_modules/nprogress/nprogress.css";
+
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "./base.css";
+
+@import "./phoenix_live.css";
+
+@import "./pages/home.css";
+
+@import "./components/header.css";
+
+@import "tailwindcss/utilities";

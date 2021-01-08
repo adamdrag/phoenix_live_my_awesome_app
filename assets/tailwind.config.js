@@ -1,13 +1,14 @@
 module.exports = {
   purge: {
     enabled: process.env.MIX_ENV === "prod",
-    content: [
-      "../lib/**/*.eex",
-      "../lib/**/*.leex"
-    ],
+    content: ["../lib/**/*.eex", "../lib/**/*.leex"],
     options: {
-      whitelist: []
-    }
+      whitelist: [],
+    },
   },
-  plugins: [require("kutty")]
-}
+  plugins: [
+    require("kutty"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/ui"),
+  ],
+};
