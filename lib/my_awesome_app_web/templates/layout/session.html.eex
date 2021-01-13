@@ -10,7 +10,8 @@
     <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body class="flex flex-col h-full pt-32 bg-gray-700">
-    <%= render "header.html", assigns %>
+    <%# <%= render "header.html", assigns %>
+    <%= live_render @conn, MyAwesomeAppWeb.View.HeaderLive.Index, session: %{"current_user" => @current_user} %>
 
     <main role="main" class="container mx-auto mb-8 px-4 max-w-6xl">
       <p class="alert alert-info alert-left toast" role="alert"><%= get_flash(@conn, :info) %></p>
