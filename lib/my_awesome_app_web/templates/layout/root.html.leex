@@ -11,7 +11,9 @@
   </head>
   <body>
     <%= render "header.html", assigns %>
+    <%= live_render @conn, MyAwesomeAppWeb.View.HeaderLive.Index %>
     <%= @inner_content %>
+    <%= live_render @conn, MyAwesomeAppWeb.View.FooterLive.Index %>
     <%= render "footer.html", assigns %>
   </body>
 </html>
