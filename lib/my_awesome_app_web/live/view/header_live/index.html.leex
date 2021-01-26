@@ -56,7 +56,9 @@
             <%# Dropdown List %>
           <div class="<%= @toggle_user_menu %> drop-down-list" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
             <%= if @current_user do %>
-                <a href="#" role="menuitem">Your Profile</a>
+                <p class="text-gray-900 pt-2 pb-1 px-4 rounded-md text-xs font-medium">
+                  <%= @current_user.email %>
+                </p>
                 <%= link "Settings", to: Routes.user_settings_path(@socket, :edit), role: "menuitem" %>
                 <%= link "Sign out", to: Routes.user_session_path(@socket, :delete), method: :delete, role: "menuitem" %>
             <% else %>
