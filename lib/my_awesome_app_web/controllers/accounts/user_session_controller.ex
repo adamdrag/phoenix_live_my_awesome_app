@@ -1,8 +1,8 @@
-defmodule MyAwesomeAppWeb.UserSessionController do
+defmodule MyAwesomeAppWeb.Accounts.UserSessionController do
   use MyAwesomeAppWeb, :controller
 
   alias MyAwesomeApp.Accounts
-  alias MyAwesomeAppWeb.UserAuth
+  alias MyAwesomeAppWeb.Accounts.UserAuth
 
   def new(conn, _params) do
     render(conn, "new.html", error_message: nil)

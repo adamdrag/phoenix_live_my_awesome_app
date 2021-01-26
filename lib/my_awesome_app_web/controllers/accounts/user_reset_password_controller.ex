@@ -1,4 +1,4 @@
-defmodule MyAwesomeAppWeb.UserResetPasswordController do
+defmodule MyAwesomeAppWeb.Accounts.UserResetPasswordController do
   use MyAwesomeAppWeb, :controller
 
   alias MyAwesomeApp.Accounts

@@ -1,4 +1,4 @@
-defmodule MyAwesomeAppWeb.UserConfirmationController do
+defmodule MyAwesomeAppWeb.Accounts.UserConfirmationController do
   use MyAwesomeAppWeb, :controller
 
   alias MyAwesomeApp.Accounts

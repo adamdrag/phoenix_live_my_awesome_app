@@ -1,4 +1,4 @@
-defmodule MyAwesomeAppWeb.UserAuth do
+defmodule MyAwesomeAppWeb.Accounts.UserAuth do
   import Plug.Conn
   import Phoenix.Controller
 

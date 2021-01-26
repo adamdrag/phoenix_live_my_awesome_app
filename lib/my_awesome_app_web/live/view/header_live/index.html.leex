@@ -24,10 +24,15 @@
         </div>
         <div class="menu">
           <div class="menu-container">
-            <%= link "Dashboard", to: Routes.page_path(@socket, :index), class: "active" %>
-            <a href="#">Team</a>
-            <a href="#">Projects</a>
-            <a href="#">Calendar</a>
+            <%= if @current_user do %>
+                <%= link "Dashboard", to: Routes.page_path(@socket, :index), class: "active" %>
+                <a href="#">Team</a>
+                <a href="#">Projects</a>
+                <a href="#">Calendar</a>
+            <% else %>
+                <%= link "Dashboard", to: Routes.page_path(@socket, :index), class: "active" %>
+                <a href="#">Calendar</a>
+            <% end %>
           </div>
         </div>
       </div>

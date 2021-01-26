@@ -1,8 +1,8 @@
-defmodule MyAwesomeAppWeb.UserSettingsController do
+defmodule MyAwesomeAppWeb.Accounts.UserSettingsController do
   use MyAwesomeAppWeb, :controller
 
   alias MyAwesomeApp.Accounts
-  alias MyAwesomeAppWeb.UserAuth
+  alias MyAwesomeAppWeb.Accounts.UserAuth
 
   plug :assign_email_and_password_changesets
 

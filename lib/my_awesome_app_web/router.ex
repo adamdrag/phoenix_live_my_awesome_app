@@ -1,7 +1,7 @@
 defmodule MyAwesomeAppWeb.Router do
   use MyAwesomeAppWeb, :router
 
-  import MyAwesomeAppWeb.UserAuth
+  import MyAwesomeAppWeb.Accounts.UserAuth
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -49,35 +49,35 @@ defmodule MyAwesomeAppWeb.Router do
   scope "/", MyAwesomeAppWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated, :put_session_layout]
 
-    get "/users/register", UserRegistrationController, :new
-    post "/users/register", UserRegistrationController, :create
-    get "/users/log_in", UserSessionController, :new
-    post "/users/log_in", UserSessionController, :create
-    get "/users/reset_password", UserResetPasswordController, :new
-    post "/users/reset_password", UserResetPasswordController, :create
-    get "/users/reset_password/:token", UserResetPasswordController, :edit
-    put "/users/reset_password/:token", UserResetPasswordController, :update
+    get "/users/register", Accounts.UserRegistrationController, :new
+    post "/users/register", Accounts.UserRegistrationController, :create
+    get "/users/log_in", Accounts.UserSessionController, :new
+    post "/users/log_in", Accounts.UserSessionController, :create
+    get "/users/reset_password", Accounts.UserResetPasswordController, :new
+    post "/users/reset_password", Accounts.UserResetPasswordController, :create
+    get "/users/reset_password/:token", Accounts.UserResetPasswordController, :edit
+    put "/users/reset_password/:token", Accounts.UserResetPasswordController, :update
   end
 
   scope "/", MyAwesomeAppWeb do
     pipe_through [:browser, :require_authenticated_user]
 
-    get "/users/settings", UserSettingsController, :edit
-    put "/users/settings", UserSettingsController, :update
-    get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
-    put "/users/settings/update_avatar", UserSettingsController, :update_avatar
+    get "/users/settings", Accounts.UserSettingsController, :edit
+    put "/users/settings", Accounts.UserSettingsController, :update
+    get "/users/settings/confirm_email/:token", Accounts.UserSettingsController, :confirm_email
+    put "/users/settings/update_avatar", Accounts.UserSettingsController, :update_avatar
   end
 
   scope "/", MyAwesomeAppWeb do
     pipe_through [:browser]
 
-    delete "/users/log_out", UserSessionController, :delete
-    get "/users/confirm", UserConfirmationController, :new
-    post "/users/confirm", UserConfirmationController, :create
-    get "/users/confirm/:token", UserConfirmationController, :confirm
+    delete "/users/log_out", Accounts.UserSessionController, :delete
+    get "/users/confirm", Accounts.UserConfirmationController, :new
+    post "/users/confirm", Accounts.UserConfirmationController, :create
+    get "/users/confirm/:token", Accounts.UserConfirmationController, :confirm
   end
 
-  if Mix.env == :dev do
+  if Mix.env() == :dev do
     forward "/sent_emails", Bamboo.SentEmailViewerPlug
   end
 end

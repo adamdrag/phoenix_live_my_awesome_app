@@ -1,9 +1,9 @@
-defmodule MyAwesomeAppWeb.UserRegistrationController do
+defmodule MyAwesomeAppWeb.Accounts.UserRegistrationController do
   use MyAwesomeAppWeb, :controller
 
   alias MyAwesomeApp.Accounts
   alias MyAwesomeApp.Accounts.User
-  alias MyAwesomeAppWeb.UserAuth
+  alias MyAwesomeAppWeb.Accounts.UserAuth
 
   def new(conn, _params) do
     changeset = Accounts.change_user_registration(%User{})
