@@ -1,5 +1,6 @@
 defmodule MyAwesomeApp.MixProject do
   use Mix.Project
+
   def project do
     [
       app: :my_awesome_app,
@@ -12,6 +13,7 @@ defmodule MyAwesomeApp.MixProject do
       deps: deps()
     ]
   end
+
   # Configuration for the OTP application.
   #
   # Type `mix help compile.app` for more information.
@@ -21,6 +23,7 @@ defmodule MyAwesomeApp.MixProject do
       extra_applications: [:logger, :runtime_tools]
     ]
   end
+
   # Specifies which paths to compile per environment.
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
@@ -58,9 +61,11 @@ defmodule MyAwesomeApp.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:timex, "~> 3.5"}
     ]
   end
+
   # Aliases are shortcuts or tasks specific to the current project.
   # For example, to install project dependencies and perform other setup tasks, run:
   #

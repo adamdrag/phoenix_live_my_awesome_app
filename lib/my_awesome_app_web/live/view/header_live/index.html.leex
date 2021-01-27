@@ -28,10 +28,10 @@
                 <%= link "Dashboard", to: Routes.page_path(@socket, :index), class: "active" %>
                 <a href="#">Team</a>
                 <a href="#">Projects</a>
-                <a href="#">Calendar</a>
+                <%= link("Calendar", to: "/calendar") %>
             <% else %>
                 <%= link "Dashboard", to: Routes.page_path(@socket, :index), class: "active" %>
-                <a href="#">Calendar</a>
+                <%= link("Calendar", to: "/calendar") %>
             <% end %>
           </div>
         </div>

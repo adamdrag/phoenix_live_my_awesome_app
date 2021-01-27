@@ -75,6 +75,7 @@ defmodule MyAwesomeAppWeb.Router do
     get "/users/confirm", Accounts.UserConfirmationController, :new
     post "/users/confirm", Accounts.UserConfirmationController, :create
     get "/users/confirm/:token", Accounts.UserConfirmationController, :confirm
+    live "/calendar", Pages.CalendarLive.Index, :index
   end
 
   if Mix.env() == :dev do
