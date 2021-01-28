@@ -18,8 +18,10 @@ defmodule MyAwesomeAppWeb.Pages.CalendarLive.Index do
     {:ok, assign(socket, assigns)}
   end
 
-  defp day_names(:sun), do: [7, 1, 2, 3, 4, 5, 6] |> Enum.map(&Timex.day_shortname/1)
+  # defp day_names(:sun), do: [7, 1, 2, 3, 4, 5, 6] |> Enum.map(&Timex.day_shortname/1)
   defp day_names(_), do: [1, 2, 3, 4, 5, 6, 7] |> Enum.map(&Timex.day_shortname/1)
+
+  # ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
   defp week_rows(current_date) do
     first =
@@ -27,10 +29,14 @@ defmodule MyAwesomeAppWeb.Pages.CalendarLive.Index do
       |> Timex.beginning_of_month()
       |> Timex.beginning_of_week(@week_start_at)
 
+    # ~U[2020-12-28 00:00:00.000000Z]
+
     last =
       current_date
       |> Timex.end_of_month()
       |> Timex.end_of_week(@week_start_at)
+
+    # ~U[2021-01-31 23:59:59.999999Z]
 
     Interval.new(from: first, until: last)
     |> Enum.map(& &1)

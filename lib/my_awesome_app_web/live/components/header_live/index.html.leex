@@ -1,0 +1,153 @@
+<% close_icon = if(@toggle_mobile_view_menu_dropdown_opened? == true, do: "block", else: "hidden") %>
+<% hamburger_icon = if(@toggle_mobile_view_menu_dropdown_opened? == true, do: "hidden", else: "block") %>
+
+<nav id="header">
+  <div class="container">
+    <div class="nav">
+
+    <%# Mobile View %>
+      <div class="nav-mobile">
+        <button phx-click="toggle-mobile-view-hamburger-menu" aria-expanded="false">
+          <span>Open main menu</span>
+          <svg class="<%= hamburger_icon %> h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="<%= close_icon %> h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+    <%# Menu %>
+      <div class="nav-pages">
+        <div class="logo">
+          <img class="small-screen" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+          <img class="big-screen" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+          <%= link "myawesomeapp", to: Routes.page_path(@socket, :index) %>
+        </div>
+        <div class="menu">
+          <div class="menu-container">
+            <%= if @current_user do %>
+                <%# TODO: fix css active menu link %>
+                <%= link "Dashboard", to: Routes.page_path(@socket, :index) %>
+                <a href="#">Team</a>
+                <%= link("Calendar", to: "/calendar") %>
+                <div
+                  id="<%= if connected?(@socket), do: "connected-projects_dropdown", else: "not-connected-projects_dropdown" %>"
+                  x-data="{ open_projects_dropdown: false }"
+                  x-on:mouseleave="open_projects_dropdown = false"
+                  class="projects"
+                >
+                  <div>
+                    <button
+                      x-on:mouseover="open_projects_dropdown = true"
+                      type="button"
+                      id="options-menu" aria-haspopup="true" aria-expanded="true">
+                      Projects
+                      <svg class="-mr-1 ml-1 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                    </button>
+                  </div>
+                  <div
+                    x-show="open_projects_dropdown"
+                    x-on:click="open_projects_dropdown = false"
+                    x-on:mouseleave="open_projects_dropdown = false"
+                    x-transition:enter="transition ease-out duration-100"
+                    x-transition:enter-start="transform opacity-0 scale-95"
+                    x-transition:enter-end="transform opacity-100 scale-100"
+                    x-transition:leave="transition ease-in duration-75"
+                    x-transition:leave-start="transform opacity-100 scale-100"
+                    x-transition:leave-end="transform opacity-0 scale-95"
+                    class="z-10 origin-top-right absolute right-0 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                    <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                      <%= link("Dropdown Alpine", to: "/dropdown-alpine") %>
+                      <%= link("Table", to: "/table") %>
+                      <a href="#" role="menuitem">Table with filter</a>
+                    </div>
+                  </div>
+                </div>
+            <% else %>
+                <%= link "Dashboard", to: Routes.page_path(@socket, :index), class: "active" %>
+                <%= link("Calendar", to: "/calendar") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    <%# User %>
+      <div class="nav-user">
+        <button>
+          <span>View notifications</span>
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+          </svg>
+        </button>
+
+        <div
+          id="<%= if connected?(@socket), do: "connected-user-menu", else: "not-connected-user-menu" %>"
+          x-data="{ open_user_dropdown: false }"
+          @keydown.escape="open_user_dropdown = false"
+          @click.away="open_user_dropdown = false"
+          class="drop-down"
+        >
+          <div>
+            <button
+                @click="open_user_dropdown = !open_user_dropdown"
+                id="user-menu"
+                type="button"
+                aria-haspopup="true"
+            >
+              <span>Open user menu</span>
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+            </button>
+          </div>
+
+          <%# Dropdown List %>
+          <div
+            x-show="open_user_dropdown"
+            x-transition:enter="transition ease-out duration-100"
+            x-transition:enter-start="transform opacity-0 scale-95"
+            x-transition:enter-end="transform opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-75"
+            x-transition:leave-start="transform opacity-100 scale-100"
+            x-transition:leave-end="transform opacity-0 scale-95"
+            class="drop-down-list"
+          >
+            <%= if @current_user do %>
+              <div class="px-4 py-3">
+                <p class="text-sm">
+                  Signed in as
+                </p>
+                <p class="text-sm font-medium text-gray-900 truncate">
+                  <%= @current_user.email %>
+                </p>
+              </div>
+              <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                <%= link "Account settings", to: Routes.user_settings_path(@socket, :edit), role: "menuitem" %>
+                <a href="#" role="menuitem">Support</a>
+                <a href="#" role="menuitem">License</a>
+              </div>
+              <div class="py-1">
+                <%= link "Sign out", to: Routes.user_session_path(@socket, :delete), method: :delete, role: "menuitem" %>
+              </div>
+            <% else %>
+                <%= link "Sign In", to: Routes.user_session_path(@socket, :new), role: "menuitem" %>
+                <%= link "Register", to: Routes.user_registration_path(@socket, :new), role: "menuitem" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <%# Mobile View - Menu List %>
+  <div class="<%= close_icon %> mobile-menu">
+    <div class="user-section">
+        <%= link "Dashboard", to: Routes.page_path(@socket, :index) %>
+        <a href="#">Team</a>
+        <a href="#">Projects</a>
+        <a href="#">Calendar</a>
+    </div>
+  </div>
+</nav>

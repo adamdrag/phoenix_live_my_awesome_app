@@ -51,6 +51,18 @@
             a {
               @apply text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium;
             }
+
+            .projects {
+              @apply relative inline-block text-left block;
+
+              button {
+                @apply inline-flex justify-center w-full text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium;
+              }
+
+              a {
+                @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900;
+              }
+            }
           }
         }
       }
@@ -82,10 +94,10 @@
           }
 
           .drop-down-list {
-            @apply origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5;
+            @apply origin-top-right absolute right-0 mt-2 py-1 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100;
 
             a {
-              @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100;
+              @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900;
             }
           }
         }

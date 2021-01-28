@@ -1,34 +1,40 @@
-<div class="bg-white overflow-hidden shadow rounded-lg lg:mx-48 md:mx-12 mx-2">
-  <div class="px-4 py-5 sm:p-6">
-    <div class="flex items-baseline justify-between">
-    <h3 class="ml-4 text-gray-600 text-lg">
-        <%= Timex.format!(@current_date, "%B %Y", :strftime) %>
-    </h3>
-    <div>
-        <a href="#" phx-click="prev-month" class="inline-block text-sm bg-white p-2 rounded shadow text-gray-600 border border-gray-200">&laquo; Prev</a>
-        <a href="#" phx-click="next-month" class="inline-block text-sm bg-white p-2 rounded shadow text-gray-600 border border-gray-200">&raquo; Next</a>
-    </div>
-    </div>
+<%= live_component @socket, MyAwesomeAppWeb.Components.PanelTitleLive, title: "Dashboard" %>
 
-    <table class="w-full mt-4 border border-gray-200 rounded-lg shadow-lg">
-        <thead>
-            <tr>
-                <%= for day_name <- @day_names do %>
-                    <th class="text-xs p-2 text-gray-600 border border-gray-200">
-                        <%= day_name %>
-                    </th>
-                <% end %>
-            </tr>
-        </thead>
-        <tbody>
-            <%= for week <- @week_rows do %>
-                <tr>
-                    <%= for day <- week do %>
-                        <%= live_component @conn, MyAwesomeAppWeb.Pages.CalendarLive.CalendarDayComponent, day: day, current_date: @current_date %>
-                    <% end %>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
-  </div>
+<div class="inset-x-0 pb-2 sm:pb-5">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+                <div class="flex items-baseline justify-between">
+                <h3 class="ml-4 text-gray-600 text-lg">
+                    <%= Timex.format!(@current_date, "%B %Y", :strftime) %>
+                </h3>
+                <div>
+                    <a href="#" phx-click="prev-month" class="inline-block text-sm bg-white p-2 rounded shadow text-gray-600 border border-gray-200">&laquo; Prev</a>
+                    <a href="#" phx-click="next-month" class="inline-block text-sm bg-white p-2 rounded shadow text-gray-600 border border-gray-200">&raquo; Next</a>
+                </div>
+                </div>
+
+                <table class="w-full mt-4 border border-gray-200 rounded-lg shadow-lg">
+                    <thead>
+                        <tr>
+                            <%= for day_name <- @day_names do %>
+                                <th class="text-xs p-2 text-gray-600 border border-gray-200">
+                                    <%= day_name %>
+                                </th>
+                            <% end %>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%= for week <- @week_rows do %>
+                            <tr>
+                                <%= for day <- week do %>
+                                    <%= live_component @conn, MyAwesomeAppWeb.Pages.CalendarLive.CalendarDayComponent, day: day, current_date: @current_date %>
+                                <% end %>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

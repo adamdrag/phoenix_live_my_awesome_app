@@ -3,6 +3,6 @@ defmodule MyAwesomeAppWeb.PageLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, text: "Hello")}
+    {:ok, socket}
   end
 end
