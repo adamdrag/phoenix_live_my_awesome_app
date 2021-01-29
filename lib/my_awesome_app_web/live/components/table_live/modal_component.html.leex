@@ -1,0 +1,17 @@
+<%= if @modal_open do %>
+    <div id="modal"
+        class="phx-modal"
+        phx-capture-click="close-modal"
+        phx-window-keydown="close-modal"
+        phx-key="escape"
+        phx-page-loading>
+
+        <div class="phx-modal-content">
+            <h2>Filter Table</h2>
+            <p>hfjdkshkfsdkjfhksd</p>
+            <button phx-click="close-modal">Close</button>
+        </div>
+    </div>
+<% else %>
+    <div class="modal-hidden"></div>
+<% end %>

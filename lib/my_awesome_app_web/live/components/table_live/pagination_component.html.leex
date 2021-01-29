@@ -1,0 +1,97 @@
+<div class="flex-1 flex justify-between sm:hidden">
+        <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500">
+        Previous
+        </a>
+        <a href="#" class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500">
+        Next
+        </a>
+        </div>
+        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+        <div>
+        <p class="text-sm text-gray-700">
+                Showing
+                <span class="font-medium">1</span>
+                to
+                <span class="font-medium">10</span>
+                of
+                <span class="font-medium">97</span>
+                results
+        </p>
+        </div>
+
+        <%= link to: "#", phx_click: "open-modal", class: "inline-block text-right" do %>
+                <span class="flex p-2 rounded-lg border border-gray-300">
+                        <svg class="h-6 w-6 text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
+                        </svg>
+                </span>
+
+        <%= end %>
+
+        <div class="relative inline-block text-left">
+                <form phx-change="select-per-page" class="select-form">
+                        <select name="per-page">
+                                <%= options_for_select([5, 10, 15, 20], @options.per_page) %>
+                        </select>
+                </form>
+        </div>
+
+        <%# <div class="relative inline-block text-left">
+                <div>
+                <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500" id="options-menu" aria-haspopup="true" aria-expanded="true">
+                Options
+                <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                </button>
+                </div>
+                <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Account settings</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">Support</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">License</a>
+                </div>
+                </div>
+        </div> %>
+
+        <div>
+                <nav class="relative z-0 inline-flex shadow-sm -space-x-px" aria-label="Pagination">
+                        <%= if @options.page > 1 do %>
+                                <%= pagination_link(@socket,
+                                        "<<",
+                                        1,
+                                        @options.per_page,
+                                        @options,
+                                        "relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50") %>
+                                <%= pagination_link(@socket,
+                                        "<",
+                                        @options.page - 1,
+                                        @options.per_page,
+                                        @options,
+                                        "relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50") %>
+                        <% end %>
+                        <%= for i <- (@options.page - 2)..(@options.page + 2), i > 0 and i <= @max_page do %>
+                                <%= pagination_link(@socket,
+                                                " #{i} ",
+                                                i,
+                                                @options.per_page,
+                                                @options,
+                                                (if i == @options.page, do: "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-50", else: "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50")) %>
+                        <% end %>
+                        <%= if @options.page < @max_page do %>
+                                <%= pagination_link(@socket,
+                                                ">",
+                                                @options.page + 1,
+                                                @options.per_page,
+                                                @options,
+                                                "relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50") %>
+                                <%= pagination_link(@socket,
+                                                ">>",
+                                                @max_page,
+                                                @options.per_page,
+                                                @options,
+                                                "relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50") %>
+                        <% end %>
+                </nav>
+        </div>
+  </div>

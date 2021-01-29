@@ -28,7 +28,6 @@
         <div class="menu">
           <div class="menu-container">
             <%= if @current_user do %>
-                <%# TODO: fix css active menu link %>
                 <%= link "Dashboard", to: Routes.page_path(@socket, :index) %>
                 <a href="#">Team</a>
                 <%= link("Calendar", to: "/calendar") %>
@@ -112,7 +111,7 @@
             x-transition:leave="transition ease-in duration-75"
             x-transition:leave-start="transform opacity-100 scale-100"
             x-transition:leave-end="transform opacity-0 scale-95"
-            class="drop-down-list"
+            class="z-10 drop-down-list"
           >
             <%= if @current_user do %>
               <div class="px-4 py-3">
