@@ -1,4 +1,4 @@
-defmodule MyAwesomeAppWeb.Pages.DropdownAlpineLive.Index do
+defmodule MyAwesomeAppWeb.Pages.AlpineExamplesLive.Index do
   use MyAwesomeAppWeb, :live_view
 
   def mount(_params, _session, socket) do
@@ -7,11 +7,11 @@ defmodule MyAwesomeAppWeb.Pages.DropdownAlpineLive.Index do
 
   def render(assigns) do
     ~L"""
-      <%= live_component @socket, MyAwesomeAppWeb.Components.PanelTitleLive, title: "Alpine JS" %>
+      <%= live_component @socket, MyAwesomeAppWeb.Components.PageTitleLive, title: "Alpine Examples" %>
 
       <div class="flex justify-center">
         <div
-          id="<%= if connected?(@socket), do: "connected-id", else: "not-connected-id" %>"
+          id="<%= if connected?(@socket), do: 'connected-id', else: 'not-connected-id' %>"
           x-data="{ open_options: false }"
           @keydown.escape="open_options = false"
           @click.away="open_options = false"

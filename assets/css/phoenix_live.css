@@ -8,7 +8,7 @@
 }
 
 .alert.toast {
-  @apply z-40 fixed top-0 right-0 w-64 mt-20 shadow-xl cursor-pointer text-sm ease-out duration-300;
+  @apply z-40 fixed top-0 right-0 mt-2 w-64 mt-20 shadow-xl cursor-pointer text-sm ease-out duration-300;
 }
 
 /* --- */

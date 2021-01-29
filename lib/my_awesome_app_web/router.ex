@@ -17,12 +17,6 @@ defmodule MyAwesomeAppWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", MyAwesomeAppWeb do
-    pipe_through :browser
-
-    live "/", PageLive, :index
-  end
-
   # Other scopes may use custom stacks.
   # scope "/api", MyAwesomeAppWeb do
   #   pipe_through :api
@@ -66,7 +60,7 @@ defmodule MyAwesomeAppWeb.Router do
     put "/users/settings", Accounts.UserSettingsController, :update
     get "/users/settings/confirm_email/:token", Accounts.UserSettingsController, :confirm_email
     put "/users/settings/update_avatar", Accounts.UserSettingsController, :update_avatar
-    live "/dropdown-alpine", Pages.DropdownAlpineLive.Index, :index
+    live "/alpine-examples", Pages.AlpineExamplesLive.Index, :index
     live "/table", Pages.TableLive.Index, :index
   end
 
@@ -77,6 +71,7 @@ defmodule MyAwesomeAppWeb.Router do
     get "/users/confirm", Accounts.UserConfirmationController, :new
     post "/users/confirm", Accounts.UserConfirmationController, :create
     get "/users/confirm/:token", Accounts.UserConfirmationController, :confirm
+    live "/", Pages.DashboardLive.Index, :index
     live "/calendar", Pages.CalendarLive.Index, :index
   end
 

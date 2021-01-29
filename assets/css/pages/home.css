@@ -1,5 +1,5 @@
 #home {
-  @apply max-w-7xl mx-auto px-2 sm:px-6 lg:px-8;
+  @apply my-8;
 
   .title {
     @apply text-gray-500 text-xs font-medium uppercase tracking-wide;

@@ -1,5 +1,5 @@
 <footer class="py-4 mt-auto text-gray-600 bg-gray-800 footer">
     <div class="container max-w-6xl mx-auto">
-        <%= link "myawesomeapp", to: Routes.page_path(@conn, :index), class: "text-muted px-2 hover:text-white" %>
+        <%= link "myawesomeapp", to: Routes.dashboard_index_path(@conn, :index), class: "text-muted px-2 hover:text-white" %>
     </div>
 </footer>

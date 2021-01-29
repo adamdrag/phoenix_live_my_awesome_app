@@ -1,4 +1,4 @@
-defmodule MyAwesomeAppWeb.PageLive do
+defmodule MyAwesomeAppWeb.Pages.DashboardLive.Index do
   use MyAwesomeAppWeb, :live_view
 
   @impl true

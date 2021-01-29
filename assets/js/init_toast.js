@@ -1,18 +1,18 @@
 export const InitToast = {
   mounted() {
-    init()
-  }
-}
+    init();
+  },
+};
 
 const init = () => {
-  const toastEl = document.querySelector('.toast')
-  if (toastEl && toastEl.innerText !== '') {
-    toastEl.classList.add("mr-4")
+  const toastEl = document.querySelector(".toast");
+  if (toastEl && toastEl.innerText !== "") {
+    toastEl.classList.add("mr-8");
 
     setTimeout(() => {
-      toastEl.classList.toggle("-mr-64", "mr-4")
+      toastEl.classList.toggle("-mr-72", "mr-8");
     }, 3000);
   }
-}
+};
 
-init()
+init();

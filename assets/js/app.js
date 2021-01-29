@@ -16,6 +16,7 @@ import "phoenix_html";
 import { Socket } from "phoenix";
 import NProgress from "nprogress";
 import { LiveSocket } from "phoenix_live_view";
+// for live flash alerts - templates/layout/live.html.leex
 import { InitToast } from "./init_toast.js";
 
 let Hooks = {};

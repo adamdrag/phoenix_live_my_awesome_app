@@ -24,3 +24,5 @@ defmodule MyAwesomeAppWeb.Components.HeaderLive.Index do
     {:noreply, socket}
   end
 end
+
+# Not using it
