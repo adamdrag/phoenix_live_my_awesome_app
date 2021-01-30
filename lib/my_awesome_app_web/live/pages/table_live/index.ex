@@ -50,6 +50,25 @@ defmodule MyAwesomeAppWeb.Pages.TableLive.Index do
     {:noreply, socket}
   end
 
+  def handle_event("select-per-page-test", %{"per-page" => per_page}, socket) do
+    per_page = String.to_integer(per_page)
+
+    socket =
+      push_patch(socket,
+        to:
+          Routes.table_index_path(
+            socket,
+            :index,
+            page: socket.assigns.options.page,
+            per_page: per_page,
+            sort_by: socket.assigns.options.sort_by,
+            sort_order: socket.assigns.options.sort_order
+          )
+      )
+
+    {:noreply, socket}
+  end
+
   def handle_event("open-modal", _params, socket) do
     socket = assign(socket, modal_open: true)
     {:noreply, socket}

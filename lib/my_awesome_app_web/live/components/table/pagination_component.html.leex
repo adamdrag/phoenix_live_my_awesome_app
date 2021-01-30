@@ -1,0 +1,91 @@
+<div class="flex-1 flex justify-between sm:hidden">
+  <%= if @options.page > 1 do %>
+    <%= pagination_link(@socket,
+          "Previous",
+          @options.page - 1,
+          @options.per_page,
+          @options,
+          "relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500") %>
+  <% end %>
+  <%= if @options.page < @max_page do %>
+    <%= pagination_link(@socket,
+          "Next",
+          @options.page + 1,
+          @options.per_page,
+          @options,
+          "relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500") %>
+  <% end %>
+</div>
+
+<div class="hidden sm:flex sm:justify-between my-2">
+  <div class="flex items-center justify-start">
+    <div>
+      <p class="text-sm text-gray-700">
+        Showing
+        <span class="font-medium"><%= @options.page * @options.per_page - @options.per_page + 1%></span>
+        to
+        <span class="font-medium"><%= @options.page * @options.per_page %></span>
+        of
+        <span class="font-medium"><%= @max_page * @options.per_page %></span>
+        results
+      </p>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-end">
+    <%= link to: "#", phx_click: "open-modal", class: "inline-block" do %>
+      <svg class="h-6 w-6 text-indigo-500 hover:text-indigo-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+      </svg>
+    <% end %>
+
+    <%= live_component @socket, MyAwesomeAppWeb.Components.Form.SelectLive,
+      id: "select-per-page",
+      handle_event_name: "select-per-page-test",
+      selected: @options.per_page,
+      select_options: [5, 10, 20, 50]  %>
+
+
+    <nav class="relative z-0 inline-block shadow-sm -space-x-px" aria-label="Pagination">
+      <%= if @options.page > 1 do %>
+        <%= pagination_link(@socket,
+              "<<",
+              1,
+              @options.per_page,
+              @options,
+              "relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-200") %>
+        <%= pagination_link(@socket,
+              "<",
+              @options.page - 1,
+              @options.per_page,
+              @options,
+              "relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-200") %>
+      <% end %>
+      <%= for i <- (@options.page - 2)..(@options.page + 2), i > 0 and i <= @max_page do %>
+        <%= pagination_link(@socket,
+              " #{i} ",
+              i,
+              @options.per_page,
+              @options,
+              (if i == @options.page,
+                do: "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-indigo-500 text-sm font-medium text-gray-700 hover:bg-gray-200",
+                else: "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-200")
+              ) %>
+      <% end %>
+      <%= if @options.page < @max_page do %>
+        <%= pagination_link(@socket,
+              ">",
+              @options.page + 1,
+              @options.per_page,
+              @options,
+              "relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-200") %>
+        <%= pagination_link(@socket,
+              ">>",
+              @max_page,
+              @options.per_page,
+              @options,
+              "relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-200") %>
+      <% end %>
+    </nav>
+  </div>
+</div>

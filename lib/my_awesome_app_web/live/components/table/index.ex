@@ -1,4 +1,4 @@
-defmodule MyAwesomeAppWeb.Components.TableLive.Index do
+defmodule MyAwesomeAppWeb.Components.Table.Index do
   use Phoenix.LiveComponent
 
   def mount(_params, _session, socket) do

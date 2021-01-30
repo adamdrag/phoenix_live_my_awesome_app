@@ -17,7 +17,8 @@ config :my_awesome_app, MyAwesomeApp.Repo,
 # with webpack to recompile .js and .css sources.
 config :my_awesome_app, MyAwesomeAppWeb.Endpoint,
   http: [port: 4000],
-  debug_errors: true,
+  # debug_errors: true,
+  debug_errors: false,
   code_reloader: true,
   check_origin: false,
   watchers: [

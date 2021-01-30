@@ -9,7 +9,6 @@ defmodule MyAwesomeAppWeb.Pages.CalendarLive.Index do
     current_date = Timex.now()
 
     assigns = [
-      conn: socket,
       current_date: current_date,
       day_names: day_names(@week_start_at),
       week_rows: week_rows(current_date)

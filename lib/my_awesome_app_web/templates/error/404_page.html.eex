@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nothing to see here</title>
+    <link rel="stylesheet" href="/css/app.css">
+  </head>
+  <body>
+    <div class="inset-x-0 pb-2 sm:pb-5 sm:mt-32 mt-4">
+        <div class="max-w-5xl mx-auto px-2 sm:px-6 lg:px-8">
+            <div class="rounded-md bg-red-50 p-4">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <svg class="h-12 w-12 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="ml-8">
+                        <div class="text-4xl font-medium text-red-800 mt-1 mb-6">
+                            404 Page
+                        </div>
+                        <div class="flex items-center my-4 text-lg text-red-700">
+                            Nothing to see here!
+                        </div>
+                        <%=
+                            link "Navigate to Dashboard page",
+                            to: "/",
+                            class: "flex items-center px-4 py-2 border border-transparent font-medium rounded-md text-white-700 bg-green-200 hover:bg-green-400 focus:outline-none sm:text-sm" %>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
