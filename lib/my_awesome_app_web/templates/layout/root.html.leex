@@ -11,8 +11,8 @@
   </head>
   <body>
     <%# <%= live_render @conn, MyAwesomeAppWeb.Components.Header.Index, session: %{"current_user" => @current_user} %>
-    <%= render "header.html", assigns %>
+    <%= render(MyAwesomeAppWeb.ComponentView, "header.html", assigns ) %>
     <%= @inner_content %>
-    <%= render "footer.html", assigns %>
+    <%= render(MyAwesomeAppWeb.ComponentView, "footer.html", assigns ) %>
   </body>
 </html>

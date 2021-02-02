@@ -1,12 +1,15 @@
-<main role="main" class="mb-8 w-full">
-  <p id="alert-success" class="text-white bg-green-700 alert toast" role="alert"
+<%# [:browser] %>
+<main role="main" class="container mx-auto mb-8 px-4 max-w-8xl">
+  <p id="alert-success"
+    class="alert alert-flash bg-green-700"
+    role="alert"
     phx-click="lv:clear-flash"
-    phx-hook="InitToast"
     phx-value-key="info"><%= live_flash(@flash, :info) %></p>
 
-  <p id="alert-error" class="text-white bg-red-700 alert toast" role="alert"
+  <p id="alert-error"
+    class="alert alert-flash bg-red-700"
+    role="alert"
     phx-click="lv:clear-flash"
-    phx-hook="InitToast"
     phx-value-key="error"><%= live_flash(@flash, :error) %></p>
 
   <div class="inset-x-0 pb-2 sm:pb-5 sm:mt-6 mt-4">

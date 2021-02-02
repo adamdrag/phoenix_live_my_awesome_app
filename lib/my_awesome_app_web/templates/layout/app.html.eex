@@ -1,9 +1,10 @@
-<%# <main role="main" class="mb-8"> %>
-  <%# <p class="alert alert-info alert-left toast" role="alert"> %>
-    <%# <%= get_flash(@conn, :info) %>
-  <%# </p> %>
-  <%# <p class="alert alert-danger alert-left toast" role="alert"> %>
-    <%# <%= get_flash(@conn, :error) %>
-  <%# </p> %>
-  <%# <%= @inner_content %>
-<%# </main> %>
+<%# [:browser, :require_authenticated_user] %>
+<main role="main" class="container mx-auto mb-8 px-4 max-w-8xl">
+  <p class="alert alert-flash bg-green-700" role="alert">
+    <%= get_flash(@conn, :info) %>
+  </p>
+  <p class="alert alert-flash bg-red-700" role="alert">
+    <%= get_flash(@conn, :error) %>
+  </p>
+  <%= @inner_content %>
+</main>

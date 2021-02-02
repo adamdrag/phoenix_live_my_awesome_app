@@ -1,4 +1,4 @@
-<div class="space-y-6 xl:mx-48 lg:mx-12 md:mx-6 mx-2">
+<div class="space-y-6 xl:mx-48 lg:mx-12 md:mx-6 mx-2 py-6">
   <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
     <div class="md:grid md:grid-cols-3 md:gap-6">
       <div class="md:col-span-1">
@@ -8,42 +8,13 @@
         </p>
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
-          <%# <div class="relative mt-12 mb-4">
-            <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-gray-300"></div>
-            </div>
-            <div class="relative flex justify-center text-sm">
-              <span class="px-2 bg-white text-gray-500">
-                First/Last Name
-              </span>
-            </div>
+          <div class="mt-12 mb-4">
+            <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Email" ) %>
           </div>
-          <div class="grid grid-cols-6 gap-6">
-            <div class="col-span-6 sm:col-span-3">
-              <label for="first_name" class="block text-sm font-medium text-gray-700">First name</label>
-              <input type="text" name="first_name" id="first_name" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-            <div class="col-span-6 sm:col-span-3">
-              <label for="last_name" class="block text-sm font-medium text-gray-700">Last name</label>
-              <input type="text" name="last_name" id="last_name" autocomplete="family-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-            </div>
-          </div> %>
 
-          <div class="relative mt-12 mb-4">
-            <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-gray-300"></div>
-            </div>
-            <div class="relative flex justify-center text-sm">
-              <span class="px-2 bg-white text-gray-500">
-                Email
-              </span>
-            </div>
-          </div>
-          <%= form_for @email_changeset, Routes.user_settings_path(@conn, :update), fn f -> %>
+          <%= form_for @email_changeset, Routes.user_settings_path(@conn, :update_email), fn f -> %>
             <%= if @email_changeset.action do %>
-              <div class="alert alert-danger">
-                <p>Oops, something went wrong! Please check the errors below.</p>
-              </div>
+              <%= render(MyAwesomeAppWeb.ComponentView, "alert_error.html", message: "Oops, something went wrong! Please check the errors below." ) %>
             <% end %>
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
@@ -62,22 +33,12 @@
             </div>
           <% end %>
 
-
-          <div class="relative mt-12 mb-4">
-            <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-gray-300"></div>
-            </div>
-            <div class="relative flex justify-center text-sm">
-              <span class="px-2 bg-white text-gray-500">
-                Password
-              </span>
-            </div>
+          <div class="mt-12 mb-4">
+            <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Password" ) %>
           </div>
-          <%= form_for @password_changeset, Routes.user_settings_path(@conn, :update), fn f -> %>
+          <%= form_for @password_changeset, Routes.user_settings_path(@conn, :update_password), fn f -> %>
             <%= if @password_changeset.action do %>
-              <div class="alert alert-danger">
-                <p>Oops, something went wrong! Please check the errors below.</p>
-              </div>
+              <%= render(MyAwesomeAppWeb.ComponentView, "alert_error.html", message: "Oops, something went wrong! Please check the errors below." ) %>
             <% end %>
             <div class="grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
@@ -101,17 +62,8 @@
             </div>
           <% end %>
 
-
-
-          <div class="relative mt-12 mb-4">
-            <div class="absolute inset-0 flex items-center">
-              <div class="w-full border-t border-gray-300"></div>
-            </div>
-            <div class="relative flex justify-center text-sm">
-              <span class="px-2 bg-white text-gray-500">
-                Photo
-              </span>
-            </div>
+          <div class="mt-12 mb-4">
+            <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Photo" ) %>
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700">

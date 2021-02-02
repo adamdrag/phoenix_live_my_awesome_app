@@ -7,8 +7,12 @@
   @apply hidden;
 }
 
-.alert.toast {
-  @apply z-40 fixed top-0 right-0 mt-2 w-64 mt-20 shadow-xl cursor-pointer text-sm ease-out duration-300;
+/* .alert.toast {
+  @apply z-40 fixed top-0 mt-2 mt-20 shadow-xl cursor-pointer text-sm ease-out duration-300;
+} */
+
+.alert-flash {
+  @apply z-40 fixed top-0 left-8 mt-2 mt-20 shadow-xl cursor-pointer text-white text-sm ease-out duration-300;
 }
 
 /* --- */

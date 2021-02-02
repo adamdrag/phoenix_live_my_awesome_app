@@ -57,7 +57,8 @@ defmodule MyAwesomeAppWeb.Router do
     pipe_through [:browser, :require_authenticated_user]
 
     get "/users/settings", Accounts.UserSettingsController, :edit
-    put "/users/settings", Accounts.UserSettingsController, :update
+    put "/users/settings/update_password", Accounts.UserSettingsController, :update_password
+    put "/users/settings/update_email", Accounts.UserSettingsController, :update_email
     get "/users/settings/confirm_email/:token", Accounts.UserSettingsController, :confirm_email
     put "/users/settings/update_avatar", Accounts.UserSettingsController, :update_avatar
     live "/alpine-examples", Pages.AlpineExamplesLive.Index, :index

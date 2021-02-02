@@ -17,10 +17,10 @@ import { Socket } from "phoenix";
 import NProgress from "nprogress";
 import { LiveSocket } from "phoenix_live_view";
 // for live flash alerts - templates/layout/live.html.leex
-import { InitToast } from "./init_toast.js";
+// import { InitToast } from "./init_toast.js";
 
 let Hooks = {};
-Hooks.InitToast = InitToast;
+// Hooks.InitToast = InitToast;
 
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
