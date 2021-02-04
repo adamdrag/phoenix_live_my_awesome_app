@@ -45,6 +45,7 @@ defmodule MyAwesomeApp.MixProject do
       {:ex_aws_s3, "~> 2.0"},
       {:hackney, "~> 1.9"},
       {:sweet_xml, "~> 0.6"},
+      # Authentication
       {:bcrypt_elixir, "~> 2.0"},
       {:phx_gen_auth, "~> 0.6", only: [:dev], runtime: false},
       {:sobelow, "~> 0.8", only: :dev},

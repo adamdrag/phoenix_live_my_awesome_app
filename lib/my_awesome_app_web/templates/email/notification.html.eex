@@ -1,0 +1,4 @@
+<strong><%= @message %><strong>
+<p>Hi <%= @email %>,</p>
+<p><%= @text %>.</p>
+<p>If you didn't make this change, please contact us.</p>

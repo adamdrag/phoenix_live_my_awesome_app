@@ -1,15 +1,5 @@
 defmodule MyAwesomeApp.Accounts.UserNotifier do
-  # For simplicity, this module simply logs messages to the terminal.
-  # You should replace it by a proper email or notification tool, such as:
-  #
-  #   * Swoosh - https://hexdocs.pm/swoosh
-  #   * Bamboo - https://hexdocs.pm/bamboo
-  #
-  defp deliver(to, body) do
-    require Logger
-    Logger.debug(body)
-    {:ok, %{to: to, body: body}}
-  end
+  alias MyAwesomeApp.Emails
 
   @doc """
   Deliver instructions to confirm account.
@@ -29,6 +19,8 @@ defmodule MyAwesomeApp.Accounts.UserNotifier do
 
     ==============================
     """)
+
+    Emails.send_email_user_created_instructions(user, url)
   end
 
   @doc """
@@ -49,6 +41,8 @@ defmodule MyAwesomeApp.Accounts.UserNotifier do
 
     ==============================
     """)
+
+    Emails.send_email_reset_password_instructions(user, url)
   end
 
   @doc """
@@ -69,5 +63,33 @@ defmodule MyAwesomeApp.Accounts.UserNotifier do
 
     ==============================
     """)
+
+    Emails.send_email_update_instructions(user, url)
+  end
+
+  @doc """
+  Deliver instructions to update a user email.
+  """
+  def deliver_update_passoword_notification(user) do
+    deliver(user.email, """
+
+    ==============================
+
+    Hi #{user.email},
+
+    You updated your password successfully.
+
+    If you didn't make this change, please contact us.
+
+    ==============================
+    """)
+
+    Emails.send_password_update(user)
+  end
+
+  defp deliver(to, body) do
+    require Logger
+    Logger.debug(body)
+    {:ok, %{to: to, body: body}}
   end
 end

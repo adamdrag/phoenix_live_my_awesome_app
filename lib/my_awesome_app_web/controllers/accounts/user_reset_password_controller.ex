@@ -21,7 +21,8 @@ defmodule MyAwesomeAppWeb.Accounts.UserResetPasswordController do
     conn
     |> put_flash(
       :info,
-      "If your email is in our system, you will receive instructions to reset your password shortly."
+      "If your email is in our system, you will receive instructions to reset your password shortly.
+      Check your email."
     )
     |> redirect(to: "/")
   end
