@@ -18,9 +18,12 @@ import NProgress from "nprogress";
 import { LiveSocket } from "phoenix_live_view";
 // for live flash alerts - templates/layout/live.html.leex
 // import { InitToast } from "./init_toast.js";
+// for live drag and drop
+import Drag from "./dragHook";
 
 let Hooks = {};
 // Hooks.InitToast = InitToast;
+Hooks.Drag = Drag;
 
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
