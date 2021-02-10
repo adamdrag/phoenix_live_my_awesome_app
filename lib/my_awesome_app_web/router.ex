@@ -63,6 +63,7 @@ defmodule MyAwesomeAppWeb.Router do
     put "/users/settings/update_avatar", Accounts.UserSettingsController, :update_avatar
     live "/alpine-examples", Pages.AlpineExamplesLive.Index, :index
     live "/table", Pages.TableLive.Index, :index
+    live "/drag-and-drop", Pages.DragAndDropLive.Index, :index
   end
 
   scope "/", MyAwesomeAppWeb do

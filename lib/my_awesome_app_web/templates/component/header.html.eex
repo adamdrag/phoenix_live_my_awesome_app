@@ -68,6 +68,7 @@
                       <%= link "Alpine Examples", to: Routes.alpine_examples_index_path(@conn, :index) %>
                       <%= link "Table", to: Routes.table_index_path(@conn, :index) %>
                       <a href="#" role="menuitem">Table with filter</a>
+                      <%= link "Drag and Drop", to: Routes.drag_and_drop_index_path(@conn, :index) %>
                     </div>
                   </div>
                 </div>
