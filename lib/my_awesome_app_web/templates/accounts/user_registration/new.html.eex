@@ -37,7 +37,7 @@
       <% end %>
 
       <div class="mt-6">
-        <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Already have an account?" ) %>
+        <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Already have an account?", bg_color: "bg-white" ) %>
         <div class="text-sm py-2">
           <%= link "Sign In", to: Routes.user_session_path(@conn, :new), class: "block items-center btn btn-link btn-sm" %>
         </div>

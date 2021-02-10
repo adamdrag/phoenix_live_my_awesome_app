@@ -29,7 +29,7 @@
       <% end %>
 
       <div class="mt-6">
-        <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "I do remember my password" ) %>
+        <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "I do remember my password", bg_color: "bg-white" ) %>
         <div class="flex justify-around text-sm py-2">
           <%= link "Sign In", to: Routes.user_session_path(@conn, :new), class: "inline items-center btn btn-link btn-sm" %>
           <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "inline items-center btn btn-link btn-sm" %>

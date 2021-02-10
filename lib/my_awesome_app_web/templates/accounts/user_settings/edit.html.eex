@@ -9,7 +9,7 @@
       </div>
       <div class="mt-5 md:mt-0 md:col-span-2">
           <div class="mt-12 mb-4">
-            <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Email" ) %>
+            <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Email", bg_color: "bg-white" ) %>
           </div>
 
           <%= form_for @email_changeset, Routes.user_settings_path(@conn, :update_email), fn f -> %>
@@ -34,7 +34,7 @@
           <% end %>
 
           <div class="mt-12 mb-4">
-            <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Password" ) %>
+            <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Password", bg_color: "bg-white" ) %>
           </div>
           <%= form_for @password_changeset, Routes.user_settings_path(@conn, :update_password), fn f -> %>
             <%= if @password_changeset.action do %>
@@ -63,7 +63,7 @@
           <% end %>
 
           <div class="mt-12 mb-4">
-            <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Photo" ) %>
+            <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Photo", bg_color: "bg-white" ) %>
           </div>
           <div class="mb-6">
             <div class="mt-2 flex items-center space-x-5">

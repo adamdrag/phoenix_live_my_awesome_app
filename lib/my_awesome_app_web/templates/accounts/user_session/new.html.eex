@@ -60,7 +60,7 @@
       <% end %>
 
       <div class="mt-6">
-        <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Or continue with" ) %>
+        <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Or continue with", bg_color: "bg-white" ) %>
 
         <div class="mt-6 grid grid-cols-3 gap-3">
           <div>
@@ -93,7 +93,7 @@
       </div>
 
       <div class="mt-6">
-        <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Not a member?" ) %>
+        <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Not a member?", bg_color: "bg-white" ) %>
         <div class="text-sm py-2">
           <%= link "Register Now", to: Routes.user_registration_path(@conn, :new), class: "block items-center btn btn-link btn-sm" %>
         </div>
