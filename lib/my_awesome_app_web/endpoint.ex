@@ -24,7 +24,7 @@ defmodule MyAwesomeAppWeb.Endpoint do
     at: "/",
     from: :my_awesome_app,
     gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images js uploads favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
