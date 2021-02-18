@@ -43,7 +43,9 @@ defmodule MyAwesomeAppWeb.Router do
   scope "/", MyAwesomeAppWeb do
     pipe_through [:browser, :redirect_if_user_is_authenticated, :put_session_layout]
 
-    get "/users/register", Accounts.UserRegistrationController, :new
+    live "/users/register", Pages.RegistrationLive.Index, :new, as: :user_registration
+
+    # get "/users/register", Accounts.UserRegistrationController, :new
     post "/users/register", Accounts.UserRegistrationController, :create
     get "/users/log_in", Accounts.UserSessionController, :new
     post "/users/log_in", Accounts.UserSessionController, :create

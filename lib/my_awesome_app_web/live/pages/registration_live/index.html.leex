@@ -1,0 +1,56 @@
+<div class="flex flex-col justify-center lg:py-12 sm:px-6 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-md">
+    <img class="hidden sm:block mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
+    <h2 class="mt-6 text-center text-3xl font-extrabold text-white">
+      Create account
+    </h2>
+    <p class="mt-2 text-center text-sm text-white max-w">
+      or
+      <a href="#" class="font-medium text-indigo-400 hover:text-indigo-500 hover:underline">
+        start your 14-day free trial
+      </a>
+    </p>
+  </div>
+
+  <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+    <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <%= f = form_for @changeset,
+                Routes.user_registration_path(@socket, :create),
+                phx_submit: "save",
+                phx_change: "validate",
+                phx_trigger_action: @trigger_submit %>
+        <div class="py-2">
+          <%= label f, :email, class: "block text-sm font-medium text-gray-700" %>
+          <%= text_input f,
+                :email,
+                required: true,
+                class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+          <%= error_tag f, :email %>
+        </div>
+
+        <div class="py-2">
+          <%= label f, :password, class: "block text-sm font-medium text-gray-700" %>
+          <%= password_input f,
+                :password,
+                required: true,
+                value: input_value(f, :password),
+                class: "appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+          <%= error_tag f, :password %>
+        </div>
+
+        <div>
+          <%= submit "Register",
+                phx_disable_with: "Registering...",
+                class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+        </div>
+      </form>
+
+      <div class="mt-6">
+        <%= render(MyAwesomeAppWeb.ComponentView, "text_in_border_line.html", text: "Already have an account?", bg_color: "bg-white" ) %>
+        <div class="text-sm py-2">
+          <%= link "Sign In", to: Routes.user_session_path(@socket, :new), class: "block items-center btn btn-link btn-sm" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
