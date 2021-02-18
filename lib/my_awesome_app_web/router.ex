@@ -64,6 +64,7 @@ defmodule MyAwesomeAppWeb.Router do
     live "/alpine-examples", Pages.AlpineExamplesLive.Index, :index
     live "/table", Pages.TableLive.Index, :index
     live "/drag-and-drop", Pages.DragAndDropLive.Index, :index
+    live "/trello-clone", Pages.TrelloCloneLive.Index, :index
   end
 
   scope "/", MyAwesomeAppWeb do
