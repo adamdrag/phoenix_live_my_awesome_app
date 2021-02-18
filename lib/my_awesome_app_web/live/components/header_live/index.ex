@@ -1,4 +1,4 @@
-defmodule MyAwesomeAppWeb.Components.Header.Index do
+defmodule MyAwesomeAppWeb.Components.HeaderLive.Index do
   use MyAwesomeAppWeb, :live_view
 
   def mount(_params, session, socket) do
@@ -25,4 +25,4 @@ defmodule MyAwesomeAppWeb.Components.Header.Index do
   end
 end
 
-# Not using it
+# NOT USING

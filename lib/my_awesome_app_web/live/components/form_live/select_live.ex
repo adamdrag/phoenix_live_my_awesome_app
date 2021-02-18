@@ -1,4 +1,4 @@
-defmodule MyAwesomeAppWeb.Components.Form.SelectLive do
+defmodule MyAwesomeAppWeb.Components.FormLive.SelectLive do
   use MyAwesomeAppWeb, :live_component
 
   def mount(_params, _session, socket) do

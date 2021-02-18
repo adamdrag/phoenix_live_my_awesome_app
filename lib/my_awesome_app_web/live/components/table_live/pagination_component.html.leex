@@ -39,7 +39,7 @@
       </svg>
     <% end %>
 
-    <%= live_component @socket, MyAwesomeAppWeb.Components.Form.SelectLive,
+    <%= live_component @socket, MyAwesomeAppWeb.Components.FormLive.SelectLive,
       id: "select-per-page",
       handle_event_name: "select-per-page-test",
       selected: @options.per_page,
