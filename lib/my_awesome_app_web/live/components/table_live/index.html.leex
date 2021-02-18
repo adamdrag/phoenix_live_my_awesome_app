@@ -1,12 +1,11 @@
 <%= live_component @socket, MyAwesomeAppWeb.Components.TableLive.ModalComponent,
       id: "table-filter",
-      modal_open: @modal_open,
-      columns: @columns %>
+      columns: @columns,
+      modal_open: @modal_open %>
 
 <%= live_component @socket, MyAwesomeAppWeb.Components.TableLive.PaginationComponent,
       id: "pagination",
-      options: @options,
-      max_page: @max_page %>
+      options: @options %>
 
 <%= live_component @socket, MyAwesomeAppWeb.Components.TableLive.TableComponent,
       claims: @claims,

@@ -15,15 +15,12 @@ defmodule MyAwesomeAppWeb.Pages.TableLive.Index do
     paginate_options = %{page: page, per_page: per_page}
     sort_options = %{sort_by: sort_by, sort_order: sort_order}
 
-    all_claims = Claims.list_claims()
-
     claims = Claims.list_claims(paginate: paginate_options, sort: sort_options)
 
     socket =
       assign(socket,
         modal_open: false,
         options: Map.merge(paginate_options, sort_options),
-        max_page: Integer.floor_div(length(all_claims), paginate_options.per_page),
         claims: claims,
         columns: columns()
       )

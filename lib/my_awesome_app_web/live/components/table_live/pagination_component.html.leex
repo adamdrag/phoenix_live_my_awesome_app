@@ -1,3 +1,4 @@
+<%# small screen %>
 <div class="flex-1 flex justify-between sm:hidden">
   <%= if @options.page > 1 do %>
     <%= pagination_link(@socket,
@@ -7,7 +8,7 @@
           @options,
           "relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:text-gray-500") %>
   <% end %>
-  <%= if @options.page < @max_page do %>
+  <%= if @options.page < @max_number_of_pages do %>
     <%= pagination_link(@socket,
           "Next",
           @options.page + 1,
@@ -17,6 +18,7 @@
   <% end %>
 </div>
 
+<%# large screen %>
 <div class="hidden sm:flex sm:justify-between my-2">
   <div class="flex items-center justify-start">
     <div>
@@ -26,7 +28,7 @@
         to
         <span class="font-medium"><%= @options.page * @options.per_page %></span>
         of
-        <span class="font-medium"><%= @max_page * @options.per_page %></span>
+        <span class="font-medium"><%= @claims_number %></span>
         results
       </p>
     </div>
@@ -61,7 +63,7 @@
               @options,
               "relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-200") %>
       <% end %>
-      <%= for i <- (@options.page - 2)..(@options.page + 2), i > 0 and i <= @max_page do %>
+      <%= for i <- (@options.page - 2)..(@options.page + 2), i > 0 and i <= @max_number_of_pages do %>
         <%= pagination_link(@socket,
               " #{i} ",
               i,
@@ -72,7 +74,7 @@
                 else: "relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-200")
               ) %>
       <% end %>
-      <%= if @options.page < @max_page do %>
+      <%= if @options.page < @max_number_of_pages do %>
         <%= pagination_link(@socket,
               ">",
               @options.page + 1,
@@ -81,7 +83,7 @@
               "relative inline-flex items-center px-2 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-200") %>
         <%= pagination_link(@socket,
               ">>",
-              @max_page,
+              @max_number_of_pages,
               @options.per_page,
               @options,
               "relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-200") %>
